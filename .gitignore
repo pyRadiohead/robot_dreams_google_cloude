@@ -1,21 +1,52 @@
-# GCP credentials — NEVER commit these
+# ─────────────────────────────────────────────────────────────────
+# Sensitive secrets & credentials — NEVER commit these
+# ─────────────────────────────────────────────────────────────────
+
+# GCP Service Account key
 airflow/gcp/sa-key.json
+
+# Docker/Airflow env vars (passwords, project IDs, bucket names)
 .env
 
+# ─────────────────────────────────────────────────────────────────
+# Terraform — state has real resource IDs; tfvars has real values
+# ─────────────────────────────────────────────────────────────────
+
+# Downloaded provider binaries
+terraform/.terraform/
+
+# Live state files
+terraform/*.tfstate
+terraform/*.tfstate.backup
+
+# Provider lock file (optional to include, leaving it gitignored is safer)
+terraform/.terraform.lock.hcl
+
+# Real variable values (project ID, bucket names, etc.)
+# terraform.tfvars.example is intentionally NOT ignored — it is the safe template
+terraform/terraform.tfvars
+
+# ─────────────────────────────────────────────────────────────────
 # Airflow generated files
+# ─────────────────────────────────────────────────────────────────
 airflow/logs/
 airflow/__pycache__/
 airflow/dags/__pycache__/
+airflow/plugins/__pycache__/
 
-# Terraform state — contains sensitive info and is environment-specific
-terraform/.terraform/
-terraform/*.tfstate
-terraform/*.tfstate.backup
-terraform/.terraform.lock.hcl
-
+# ─────────────────────────────────────────────────────────────────
 # Python
+# ─────────────────────────────────────────────────────────────────
 __pycache__/
 *.pyc
 *.pyo
 .venv/
 venv/
+.python-version
+
+# ─────────────────────────────────────────────────────────────────
+# IDE / OS noise
+# ─────────────────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.DS_Store
