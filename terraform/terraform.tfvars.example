@@ -1,0 +1,9 @@
+# terraform.tfvars.example — copy to terraform.tfvars and fill in your values
+# This file IS committed to git (it has no real values).
+
+project_id            = "your-gcp-project-id"
+region                = "us-central1"
+location              = "US"
+data_lake_bucket_name = "your-project-data-lake"
+composer_env_name     = "data-platform-composer"
+composer_node_count   = 3
